@@ -16,5 +16,6 @@ Pet.create(name="Odi", species="Dog", owner_id=john.id)
 Pet.create(name="Milo", species="Cat", owner_id=sarah.id)
 Pet.create(name="Otis", species="Dog", owner_id=sarah.id)
 Pet.create(name="Toby", species="Dog", owner_id=bob.id)
+Pet.create(name="Tweety", species="Bird")
 
 print("done seeding")

@@ -43,7 +43,7 @@ class Pet():
         id INTEGER PRIMARY KEY,
         name TEXT,
         species TEXT,
-        owner_id INTEGER
+        owner_id INTEGER DEFAULT NULL
       );
     '''
 
@@ -82,6 +82,15 @@ class Pet():
 
     pets = CURSOR.execute(sql).fetchall()
 
+    return [Pet.create_by_row(row) for row in pets]
+  
+  @classmethod
+  def unadopted_pets(cls):
+    sql = '''
+      SELECT * FROM pets WHERE NOT owner_id NOT NULL;
+    '''
+
+    pets = CURSOR.execute(sql).fetchall()
     return [Pet.create_by_row(row) for row in pets]
   
   @classmethod
