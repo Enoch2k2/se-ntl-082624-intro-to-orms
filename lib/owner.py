@@ -15,6 +15,10 @@ class Owner():
   def name(self, name):
     self._name = name
 
+  def adopt_pet(self, pet):
+    pet.owner_id = self.id
+    pet.save()
+
   def pets(self):
     from pet import Pet
     sql = '''

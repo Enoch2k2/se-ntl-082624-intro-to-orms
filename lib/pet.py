@@ -129,5 +129,17 @@ class Pet():
     CURSOR.execute(sql, (self.id,))
     CONN.commit()
 
+  def adopt_owner(self, owner):
+    self.owner_id = owner.id
+    self.save()
+
+  def unadopt(self):
+    sql = '''
+      UPDATE pets SET owner_id = NULL WHERE id = ?
+    '''
+
+    CURSOR.execute(sql, (self.id,))
+    CONN.commit()
+
   def __repr__(self):
     return f'<Pet id={self.id} name="{self.name}" species="{self.species}" owner_id={self.owner_id}>'
